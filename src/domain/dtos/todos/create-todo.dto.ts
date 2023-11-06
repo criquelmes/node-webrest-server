@@ -3,7 +3,8 @@ export class CreateTodoDto {
 
   static create(props: { [key: string]: any }): [string?, CreateTodoDto?] {
     const { title } = props;
-    if (!title) return ["Title property is required", undefined];
+    if (!title || title.length === 0)
+      return ["Title property is required", undefined];
 
     return [undefined, new CreateTodoDto(title)];
   }
